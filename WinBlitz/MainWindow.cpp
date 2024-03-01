@@ -1,39 +1,107 @@
 #include "MainWindow.h"
 #include "./ui_MainWindow.h"
 #include "NotClosable.h"
+#include "CookieClicker.h"
+#include "WriteText.h"
+#include <QTimer>
+#include <QRandomGenerator>
+#include <QPushButton>
 
 MainWindow *MainWindow::sInstance = nullptr;
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent), ui(new Ui::MainWindow) {
+        : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
-}
 
-MainWindow *MainWindow::getInstance() {
-    if (sInstance == nullptr) {
-        sInstance = new MainWindow();
-    }
-    return sInstance;
+    sInstance = this;
+
+    connect(ui->StartButton, &QPushButton::clicked, this, &MainWindow::onStartButtonClicked);
+    connect(ui->ExitButton, &QPushButton::clicked, this, &MainWindow::onExitButtonClicked);
 }
 
 MainWindow::~MainWindow() {
+    gTimer->stop();
+    delete gTimer;
+
+    clearWindows();
+
     delete ui;
+}
+
+MainWindow *MainWindow::getInstance() {
+    return sInstance;
+}
+
+void MainWindow::startLoop() {
+    gTimer = new QTimer();
+    gTimer->setSingleShot(false);
+    connect(gTimer, &QTimer::timeout, this, &MainWindow::gLoop);
+    gTimer->start(1000);
+
+    for (int i = 0; i < START_WINDOW_COUNT; i++) {
+        addWindow(getRandomMiniGame());
+    }
+}
+
+void MainWindow::gLoop() {
+    int rd = QRandomGenerator::global()->bounded(100);
+    if (rd < 40) {
+        if (windows.size() == MAX_WINDOW_COUNT) {
+            gTimer->stop();
+            clearWindows();
+            return;
+        }
+        addWindow(getRandomMiniGame());
+    }
+}
+
+NotClosable *MainWindow::getRandomMiniGame() {
+    NotClosable *mg = nullptr;
+    int rd = QRandomGenerator::global()->bounded(2);
+    switch (rd) {
+        case 0:
+            mg = new CookieClicker();
+            break;
+        case 1:
+            mg = new WriteText();
+            break;
+    }
+    return mg;
 }
 
 void MainWindow::addWindow(NotClosable *window) {
     windows.insert(window);
+    window->setAttribute(Qt::WA_ShowWithoutActivating);
     window->show();
 }
 
-void MainWindow::removeWindow(NotClosable *window) {
+void MainWindow::closeWindow(NotClosable *window) {
     window->close();
     delete window;
+}
+
+void MainWindow::removeWindow(NotClosable *window) {
+    closeWindow(window);
     windows.remove(window);
 }
 
-void MainWindow::closeEvent(QCloseEvent *e) {
+void MainWindow::clearWindows() {
     for (NotClosable *window : std::as_const(windows)) {
-        window->close();
-        delete window;
+        closeWindow(window);
     }
+    windows.clear();
+}
+
+void MainWindow::closeEvent(QCloseEvent *e) {
+    QMainWindow::closeEvent(e);
+
+    clearWindows();
+}
+
+void MainWindow::onStartButtonClicked() {
+
+}
+
+void MainWindow::onExitButtonClicked() {
+    close();
 }

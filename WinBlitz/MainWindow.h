@@ -4,7 +4,11 @@
 #include <QMainWindow>
 #include <QSet>
 
+#define START_WINDOW_COUNT 2
+#define MAX_WINDOW_COUNT 10
+
 class NotClosable;
+class QTimer;
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -16,25 +20,40 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
-    static MainWindow *getInstance();
+    explicit MainWindow(QWidget *parent = nullptr);
 
     ~MainWindow();
 
+    static MainWindow *getInstance();
+
+    void startLoop();
+
+    void gLoop();
+
+    NotClosable *getRandomMiniGame();
+
     void addWindow(NotClosable *window);
 
+    void closeWindow(NotClosable *window);
+
     void removeWindow(NotClosable *window);
+
+    void clearWindows();
 
 protected:
     void closeEvent(QCloseEvent *e) override;
 
-private:
-    explicit MainWindow(QWidget *parent = nullptr);
+private slots:
+    void onStartButtonClicked();
+
+    void onExitButtonClicked();
 
 private:
     static MainWindow *sInstance;
 
     Ui::MainWindow *ui;
 
+    QTimer *gTimer;
     QSet<NotClosable *> windows;
 };
 

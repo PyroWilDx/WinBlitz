@@ -5,7 +5,6 @@
 #include <QFile>
 #include <QTextStream>
 #include <QRandomGenerator>
-#include <QDebug>
 
 WriteText::WriteText(QWidget *parent)
         : NotClosable(parent), ui(new Ui::WriteText) {
