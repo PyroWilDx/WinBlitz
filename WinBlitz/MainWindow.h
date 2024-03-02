@@ -42,6 +42,10 @@ public:
 
     void clearWindows();
 
+    void setClearedWindowCount(int value);
+
+    void setActiveWindowCount(int value);
+
 protected:
     void closeEvent(QCloseEvent *e) override;
 
@@ -57,6 +61,9 @@ private:
 
     QTimer *gTimer;
     QSet<NotClosable *> windows;
+
+    int clearedWindowCount;
+    int activeWindowCount;
 };
 
 #endif
