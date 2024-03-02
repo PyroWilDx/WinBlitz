@@ -21,6 +21,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     windows = QSet<NotClosable *>();
 
+    clearedWindowCount = 0;
+    activeWindowCount = 0;
+
     connect(ui->StartButton, &QPushButton::clicked, this, &MainWindow::onStartButtonClicked);
     connect(ui->ExitButton, &QPushButton::clicked, this, &MainWindow::onExitButtonClicked);
 }
@@ -48,7 +51,7 @@ void MainWindow::startLoop() {
 
 void MainWindow::gLoop() {
     int rd = QRandomGenerator::global()->bounded(100);
-    if (rd < 40) {
+    if (rd < 10 || windows.isEmpty()) {
         if (windows.size() == MAX_WINDOW_COUNT) {
             finishLoop();
             return;
@@ -78,8 +81,10 @@ NotClosable *MainWindow::getRandomMiniGame() {
 
 void MainWindow::addWindow(NotClosable *window) {
     windows.insert(window);
+    window->setWindowTitle("Window " + QString::number(clearedWindowCount + activeWindowCount + 1));
     window->setAttribute(Qt::WA_ShowWithoutActivating);
     window->show();
+    setActiveWindowCount(activeWindowCount + 1);
 }
 
 void MainWindow::closeWindow(NotClosable *window) {
@@ -90,6 +95,8 @@ void MainWindow::closeWindow(NotClosable *window) {
 void MainWindow::removeWindow(NotClosable *window) {
     closeWindow(window);
     windows.remove(window);
+    setClearedWindowCount(clearedWindowCount + 1);
+    setActiveWindowCount(activeWindowCount - 1);
 }
 
 void MainWindow::clearWindows() {
@@ -97,6 +104,16 @@ void MainWindow::clearWindows() {
         closeWindow(window);
     }
     windows.clear();
+}
+
+void MainWindow::setClearedWindowCount(int value) {
+    clearedWindowCount = value;
+    ui->ClearedWindowText->setText("Cleared Windows : " + QString::number(clearedWindowCount));
+}
+
+void MainWindow::setActiveWindowCount(int value) {
+    activeWindowCount = value;
+    ui->ActiveWindowText->setText("Active Windows : " + QString::number(activeWindowCount));
 }
 
 void MainWindow::closeEvent(QCloseEvent *e) {
@@ -107,8 +124,10 @@ void MainWindow::closeEvent(QCloseEvent *e) {
 
 void MainWindow::onStartButtonClicked() {
     if (ui->StartButton->text() == "Start") {
-        startLoop();
         ui->StartButton->setText("Stop");
+        setClearedWindowCount(0);
+        setActiveWindowCount(0);
+        startLoop();
     } else {
         finishLoop();
         ui->StartButton->setText("Start");
