@@ -11,9 +11,15 @@ MainWindow *MainWindow::sInstance = nullptr;
 
 MainWindow::MainWindow(QWidget *parent)
         : QMainWindow(parent), ui(new Ui::MainWindow) {
+    sInstance = this;
+
     ui->setupUi(this);
 
-    sInstance = this;
+    gTimer = new QTimer();
+    gTimer->setSingleShot(false);
+    connect(gTimer, &QTimer::timeout, this, &MainWindow::gLoop);
+
+    windows = QSet<NotClosable *>();
 
     connect(ui->StartButton, &QPushButton::clicked, this, &MainWindow::onStartButtonClicked);
     connect(ui->ExitButton, &QPushButton::clicked, this, &MainWindow::onExitButtonClicked);
@@ -33,9 +39,6 @@ MainWindow *MainWindow::getInstance() {
 }
 
 void MainWindow::startLoop() {
-    gTimer = new QTimer();
-    gTimer->setSingleShot(false);
-    connect(gTimer, &QTimer::timeout, this, &MainWindow::gLoop);
     gTimer->start(1000);
 
     for (int i = 0; i < START_WINDOW_COUNT; i++) {
@@ -47,12 +50,16 @@ void MainWindow::gLoop() {
     int rd = QRandomGenerator::global()->bounded(100);
     if (rd < 40) {
         if (windows.size() == MAX_WINDOW_COUNT) {
-            gTimer->stop();
-            clearWindows();
+            finishLoop();
             return;
         }
         addWindow(getRandomMiniGame());
     }
+}
+
+void MainWindow::finishLoop() {
+    gTimer->stop();
+    clearWindows();
 }
 
 NotClosable *MainWindow::getRandomMiniGame() {
@@ -99,7 +106,13 @@ void MainWindow::closeEvent(QCloseEvent *e) {
 }
 
 void MainWindow::onStartButtonClicked() {
-
+    if (ui->StartButton->text() == "Start") {
+        startLoop();
+        ui->StartButton->setText("Stop");
+    } else {
+        finishLoop();
+        ui->StartButton->setText("Start");
+    }
 }
 
 void MainWindow::onExitButtonClicked() {

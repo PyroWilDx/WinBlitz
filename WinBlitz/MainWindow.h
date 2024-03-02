@@ -30,6 +30,8 @@ public:
 
     void gLoop();
 
+    void finishLoop();
+
     NotClosable *getRandomMiniGame();
 
     void addWindow(NotClosable *window);
