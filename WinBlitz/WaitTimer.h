@@ -26,6 +26,8 @@ private slots:
 private:
     Ui::WaitTimer *ui;
 
+    bool gStarted;
+
     QTimer *gTimer;
     int secLeft;
 };

@@ -9,9 +9,11 @@ class NotClosable : public QWidget {
 public:
     explicit NotClosable(QWidget *parent = nullptr);
 
+    QString getName();
+
 protected:
     void closeEvent(QCloseEvent *e) override;
-
+    QString gName;
 };
 
 #endif

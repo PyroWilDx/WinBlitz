@@ -42,14 +42,14 @@
   <widget class="QPushButton" name="Button">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>230</y>
-     <width>80</width>
-     <height>24</height>
+     <x>120</x>
+     <y>190</y>
+     <width>171</width>
+     <height>81</height>
     </rect>
    </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>Start Timer</string>
    </property>
   </widget>
  </widget>
