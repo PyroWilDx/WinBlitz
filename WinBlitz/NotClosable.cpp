@@ -6,12 +6,17 @@ NotClosable::NotClosable(QWidget *parent)
     setWindowFlags(Qt::WindowTitleHint | Qt::CustomizeWindowHint);
 
     gName = "";
+    gCleared = false;
 }
 
 QString NotClosable::getName() {
     return gName;
 }
 
+void NotClosable::setClearedTrue() {
+    gCleared = true;
+}
+
 void NotClosable::closeEvent(QCloseEvent *e) {
-    e->ignore();
+    if (!gCleared) e->ignore();
 }
