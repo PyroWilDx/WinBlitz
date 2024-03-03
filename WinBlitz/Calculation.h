@@ -25,4 +25,4 @@ private:
     int answer;
 };
 
-#endif // CALCULATION_H
+#endif

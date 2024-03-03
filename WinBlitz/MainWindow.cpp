@@ -4,6 +4,7 @@
 #include "CookieClicker.h"
 #include "WriteText.h"
 #include "Calculation.h"
+#include "WaitTimer.h"
 #include <QScreen>
 #include <QTimer>
 #include <QRandomGenerator>
@@ -73,7 +74,8 @@ void MainWindow::finishLoop() {
 
 NotClosable *MainWindow::getRandomMiniGame() {
     NotClosable *mg = nullptr;
-    int rd = QRandomGenerator::global()->bounded(3);
+    // int rd = QRandomGenerator::global()->bounded(4);
+    int rd = 3;
     switch (rd) {
         case 0:
             mg = new CookieClicker();
@@ -83,6 +85,9 @@ NotClosable *MainWindow::getRandomMiniGame() {
             break;
         case 2:
             mg = new Calculation();
+            break;
+        case 3:
+            mg = new WaitTimer();
             break;
     }
     return mg;
