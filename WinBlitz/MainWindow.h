@@ -2,13 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QSet>
+#include <QQueue>
 
 #define START_WINDOW_COUNT 2
 #define MAX_WINDOW_COUNT 10
 
 class NotClosable;
-class QTimer;
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -42,6 +41,8 @@ public:
 
     void clearWindows();
 
+    void setCurrWindowHeight(int value);
+
     void setClearedWindowCount(int value);
 
     void setActiveWindowCount(int value);
@@ -58,6 +59,8 @@ private:
     static MainWindow *sInstance;
 
     Ui::MainWindow *ui;
+
+    int currWindowHeight;
 
     QTimer *gTimer;
     QSet<NotClosable *> windows;

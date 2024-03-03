@@ -27,6 +27,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         WriteText.h WriteText.cpp WriteText.ui
         NotClosable.h NotClosable.cpp
         CookieClicker.h CookieClicker.cpp CookieClicker.ui
+        Calculation.h Calculation.cpp Calculation.ui
+        WaitTimer.h WaitTimer.cpp WaitTimer.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET WinBlitz APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

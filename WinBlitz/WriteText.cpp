@@ -52,7 +52,7 @@ void WriteText::generateWords() {
     QTextStream in(&wordsFile);
     while (!in.atEnd()) {
         QString word = in.readLine();
-        if (QRandomGenerator::global()->bounded(WORDS_COUNT) < 10) {
+        if (QRandomGenerator::global()->bounded(WORDS_COUNT) < 4) {
             wordsVec.push_back(word);
         }
     }
