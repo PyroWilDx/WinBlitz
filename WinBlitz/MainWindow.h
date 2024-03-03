@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QQueue>
 
 #define START_WINDOW_COUNT 2
 #define MAX_WINDOW_COUNT 10
