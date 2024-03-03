@@ -7,6 +7,8 @@ Calculation::Calculation(QWidget *parent)
         : NotClosable(parent), ui(new Ui::Calculation) {
     ui->setupUi(this);
 
+    gName = "Calculation";
+
     int x = QRandomGenerator::global()->bounded(20);
     int y = QRandomGenerator::global()->bounded(20);
     QString opStr;

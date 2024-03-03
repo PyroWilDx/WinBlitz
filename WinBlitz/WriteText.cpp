@@ -10,6 +10,8 @@ WriteText::WriteText(QWidget *parent)
         : NotClosable(parent), ui(new Ui::WriteText) {
     ui->setupUi(this);
 
+    gName = "Write Words";
+
     generateWords();
     setRemainingWordsText();
 

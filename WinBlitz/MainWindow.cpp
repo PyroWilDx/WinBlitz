@@ -74,8 +74,8 @@ void MainWindow::finishLoop() {
 
 NotClosable *MainWindow::getRandomMiniGame() {
     NotClosable *mg = nullptr;
-    // int rd = QRandomGenerator::global()->bounded(4);
-    int rd = 3;
+    int rd = QRandomGenerator::global()->bounded(4);
+    // int rd = 3;
     switch (rd) {
         case 0:
             mg = new CookieClicker();
@@ -95,7 +95,8 @@ NotClosable *MainWindow::getRandomMiniGame() {
 
 void MainWindow::addWindow(NotClosable *window) {
     windows.insert(window);
-    window->setWindowTitle("Window " + QString::number(clearedWindowCount + activeWindowCount + 1));
+    window->setWindowTitle(window->getName() + " (Window " +
+                           QString::number(clearedWindowCount + activeWindowCount + 1) + ")");
     window->setAttribute(Qt::WA_ShowWithoutActivating);
     window->move(QApplication::primaryScreen()->geometry().width() - window->width(), currWindowHeight);
     window->show();
