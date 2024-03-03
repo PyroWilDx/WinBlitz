@@ -3,9 +3,13 @@
 #include "NotClosable.h"
 #include "CookieClicker.h"
 #include "WriteText.h"
+#include "Calculation.h"
+#include <QScreen>
 #include <QTimer>
 #include <QRandomGenerator>
 #include <QPushButton>
+#include <QStyle>
+#include <QDebug>
 
 MainWindow *MainWindow::sInstance = nullptr;
 
@@ -14,6 +18,8 @@ MainWindow::MainWindow(QWidget *parent)
     sInstance = this;
 
     ui->setupUi(this);
+
+    currWindowHeight = 0;
 
     gTimer = new QTimer();
     gTimer->setSingleShot(false);
@@ -67,13 +73,16 @@ void MainWindow::finishLoop() {
 
 NotClosable *MainWindow::getRandomMiniGame() {
     NotClosable *mg = nullptr;
-    int rd = QRandomGenerator::global()->bounded(2);
+    int rd = QRandomGenerator::global()->bounded(3);
     switch (rd) {
         case 0:
             mg = new CookieClicker();
             break;
         case 1:
             mg = new WriteText();
+            break;
+        case 2:
+            mg = new Calculation();
             break;
     }
     return mg;
@@ -83,8 +92,10 @@ void MainWindow::addWindow(NotClosable *window) {
     windows.insert(window);
     window->setWindowTitle("Window " + QString::number(clearedWindowCount + activeWindowCount + 1));
     window->setAttribute(Qt::WA_ShowWithoutActivating);
+    window->move(QApplication::primaryScreen()->geometry().width() - window->width(), currWindowHeight);
     window->show();
     setActiveWindowCount(activeWindowCount + 1);
+    setCurrWindowHeight(currWindowHeight + QApplication::style()->pixelMetric(QStyle::PM_TitleBarHeight));
 }
 
 void MainWindow::closeWindow(NotClosable *window) {
@@ -104,6 +115,13 @@ void MainWindow::clearWindows() {
         closeWindow(window);
     }
     windows.clear();
+}
+
+void MainWindow::setCurrWindowHeight(int value) {
+    currWindowHeight = value;
+    if (currWindowHeight > 0.88 * QApplication::primaryScreen()->geometry().height()) {
+        currWindowHeight = 0;
+    }
 }
 
 void MainWindow::setClearedWindowCount(int value) {
@@ -127,6 +145,7 @@ void MainWindow::onStartButtonClicked() {
         ui->StartButton->setText("Stop");
         setClearedWindowCount(0);
         setActiveWindowCount(0);
+        setCurrWindowHeight(0);
         startLoop();
     } else {
         finishLoop();

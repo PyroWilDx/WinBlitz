@@ -7,7 +7,7 @@ CookieClicker::CookieClicker(QWidget *parent)
     : NotClosable(parent), ui(new Ui::CookieClicker) {
     ui->setupUi(this);
 
-    pressedTarget = QRandomGenerator::global()->bounded(10, 30);
+    pressedTarget = QRandomGenerator::global()->bounded(6, 16);
     pressedCount = 0;
 
     ui->Info1->setText("Press the button " + QString::number(pressedTarget) + " times");
