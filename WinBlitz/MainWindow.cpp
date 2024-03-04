@@ -13,7 +13,7 @@
 #include <QPushButton>
 #include <QStyle>
 #include <QWindow>
-#include <QDebug>
+#include <QtMath>
 
 MainWindow *MainWindow::sInstance = nullptr;
 
@@ -73,7 +73,8 @@ void MainWindow::startLoop() {
 
 void MainWindow::gLoop() {
     int rd = QRandomGenerator::global()->bounded(100);
-    if (rd < 10 || windows.isEmpty()) {
+    int p = (int) (10. + qLn(qPow(clearedWindowCount + 1, qLn(clearedWindowCount + 1))));
+    if (rd < p || windows.isEmpty()) {
         if (windows.size() == MAX_WINDOW_COUNT) {
             finishLoop();
             return;
