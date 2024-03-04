@@ -15,6 +15,9 @@ public:
 
 protected:
     void closeEvent(QCloseEvent *e) override;
+
+    void keyPressEvent(QKeyEvent *e) override;
+
     QString gName;
     bool gCleared;
 };
