@@ -35,15 +35,15 @@ MainWindow::MainWindow(QWidget *parent)
     activeWindowCount = 0;
 
     keyWindowPositionMap = {
-        {Qt::Key_1, {0, 0}},
-        {Qt::Key_2, {0, 32}},
-        {Qt::Key_3, {0, 66}},
-        {Qt::Key_4, {32, 0}},
-        {Qt::Key_5, {32, 32}},
-        {Qt::Key_6, {32, 66}},
-        {Qt::Key_7, {66, 0}},
-        {Qt::Key_8, {66, 32}},
-        {Qt::Key_9, {66, 66}}
+        {Qt::Key_F1, {0, 0}},
+        {Qt::Key_F2, {0, 32}},
+        {Qt::Key_F3, {0, 66}},
+        {Qt::Key_F4, {32, 0}},
+        {Qt::Key_F5, {32, 32}},
+        {Qt::Key_F6, {32, 66}},
+        {Qt::Key_F7, {66, 0}},
+        {Qt::Key_F8, {66, 32}},
+        {Qt::Key_F9, {66, 66}}
     };
 
     connect(ui->StartButton, &QPushButton::clicked, this, &MainWindow::onStartButtonClicked);
@@ -89,8 +89,8 @@ void MainWindow::finishLoop() {
 
 NotClosable *MainWindow::getRandomMiniGame() {
     NotClosable *mg = nullptr;
-    // int rd = QRandomGenerator::global()->bounded(6);
-    int rd = 5;
+    int rd = QRandomGenerator::global()->bounded(6);
+    // int rd = 5;
     switch (rd) {
         case 0:
             mg = new CookieClicker();
