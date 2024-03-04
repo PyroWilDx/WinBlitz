@@ -12,6 +12,7 @@
 #include <QRandomGenerator>
 #include <QPushButton>
 #include <QStyle>
+#include <QWindow>
 #include <QDebug>
 
 MainWindow *MainWindow::sInstance = nullptr;
@@ -32,6 +33,18 @@ MainWindow::MainWindow(QWidget *parent)
 
     clearedWindowCount = 0;
     activeWindowCount = 0;
+
+    keyWindowPositionMap = {
+        {Qt::Key_1, {0, 0}},
+        {Qt::Key_2, {0, 32}},
+        {Qt::Key_3, {0, 66}},
+        {Qt::Key_4, {32, 0}},
+        {Qt::Key_5, {32, 32}},
+        {Qt::Key_6, {32, 66}},
+        {Qt::Key_7, {66, 0}},
+        {Qt::Key_8, {66, 32}},
+        {Qt::Key_9, {66, 66}}
+    };
 
     connect(ui->StartButton, &QPushButton::clicked, this, &MainWindow::onStartButtonClicked);
     connect(ui->ExitButton, &QPushButton::clicked, this, &MainWindow::onExitButtonClicked);
@@ -150,6 +163,10 @@ void MainWindow::setClearedWindowCount(int value) {
 void MainWindow::setActiveWindowCount(int value) {
     activeWindowCount = value;
     ui->ActiveWindowText->setText("Active Windows : " + QString::number(activeWindowCount));
+}
+
+QMap<int, QPoint> *MainWindow::getKeyWindowPositionMap() {
+    return &keyWindowPositionMap;
 }
 
 void MainWindow::closeEvent(QCloseEvent *e) {

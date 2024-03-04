@@ -46,6 +46,8 @@ public:
 
     void setActiveWindowCount(int value);
 
+    QMap<int, QPoint> *getKeyWindowPositionMap();
+
 protected:
     void closeEvent(QCloseEvent *e) override;
 
@@ -66,6 +68,8 @@ private:
 
     int clearedWindowCount;
     int activeWindowCount;
+
+    QMap<int, QPoint> keyWindowPositionMap;
 };
 
 #endif
