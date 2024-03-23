@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>400</height>
+    <width>480</width>
+    <height>360</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,9 +16,9 @@
   <widget class="QLabel" name="Info1">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>30</x>
      <y>30</y>
-     <width>341</width>
+     <width>411</width>
      <height>61</height>
     </rect>
    </property>
@@ -29,8 +29,8 @@
   <widget class="QLabel" name="Timer">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>130</y>
+     <x>40</x>
+     <y>140</y>
      <width>341</width>
      <height>61</height>
     </rect>
@@ -42,8 +42,8 @@
   <widget class="QPushButton" name="StartButton">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>270</y>
+     <x>150</x>
+     <y>230</y>
      <width>181</width>
      <height>51</height>
     </rect>
@@ -55,8 +55,8 @@
   <widget class="QLineEdit" name="Answer">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>340</y>
+     <x>190</x>
+     <y>310</y>
      <width>113</width>
      <height>24</height>
     </rect>
@@ -65,8 +65,8 @@
   <widget class="QLabel" name="Number">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>80</y>
+     <x>20</x>
+     <y>90</y>
      <width>341</width>
      <height>61</height>
     </rect>

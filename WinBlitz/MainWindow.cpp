@@ -6,6 +6,7 @@
 #include "Calculation.h"
 #include "WaitTimer.h"
 #include "SlideTo.h"
+#include "ClickDate.h"
 #include "RememberNumber.h"
 #include <QScreen>
 #include <QTimer>
@@ -90,8 +91,8 @@ void MainWindow::finishLoop() {
 
 NotClosable *MainWindow::getRandomMiniGame() {
     NotClosable *mg = nullptr;
-    int rd = QRandomGenerator::global()->bounded(6);
-    // int rd = 5;
+    // int rd = QRandomGenerator::global()->bounded(6);
+    int rd = 6;
     switch (rd) {
         case 0:
             mg = new CookieClicker();
@@ -111,6 +112,8 @@ NotClosable *MainWindow::getRandomMiniGame() {
         case 5:
             mg = new SlideTo();
             break;
+        case 6:
+            mg = new ClickDate();
     }
     return mg;
 }
@@ -120,10 +123,12 @@ void MainWindow::addWindow(NotClosable *window) {
     window->setWindowTitle(window->getName() + " (Window " +
                            QString::number(clearedWindowCount + activeWindowCount + 1) + ")");
     window->setAttribute(Qt::WA_ShowWithoutActivating);
+    window->setWindowFlag(Qt::WindowStaysOnTopHint, false);
     window->move(QApplication::primaryScreen()->geometry().width() - window->width(), currWindowHeight);
     window->show();
     setActiveWindowCount(activeWindowCount + 1);
     setCurrWindowHeight(currWindowHeight + QApplication::style()->pixelMetric(QStyle::PM_TitleBarHeight));
+    // QApplication::focusWindow()->raise();
 }
 
 void MainWindow::closeWindow(NotClosable *window) {
@@ -151,7 +156,7 @@ void MainWindow::clearWindows() {
 
 void MainWindow::setCurrWindowHeight(int value) {
     currWindowHeight = value;
-    if (currWindowHeight > 0.88 * QApplication::primaryScreen()->geometry().height()) {
+    if (currWindowHeight > 0.56 * QApplication::primaryScreen()->geometry().height()) {
         currWindowHeight = 0;
     }
 }

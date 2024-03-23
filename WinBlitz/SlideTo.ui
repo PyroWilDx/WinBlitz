@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>400</height>
+    <width>480</width>
+    <height>360</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QLabel" name="Info1">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>60</y>
+     <x>110</x>
+     <y>40</y>
      <width>291</width>
      <height>91</height>
     </rect>
@@ -29,8 +29,8 @@
   <widget class="QSlider" name="Slider">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>260</y>
+     <x>150</x>
+     <y>200</y>
      <width>160</width>
      <height>16</height>
     </rect>
@@ -48,8 +48,8 @@
   <widget class="QLabel" name="Percentage">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>280</y>
+     <x>230</x>
+     <y>250</y>
      <width>31</width>
      <height>51</height>
     </rect>
