@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Calculation</class>
- <widget class="QWidget" name="Calculation">
+ <class>ClickDate</class>
+ <widget class="QWidget" name="ClickDate">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,27 +13,27 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="Question">
+  <widget class="QCalendarWidget" name="Calendar">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>60</y>
-     <width>321</width>
-     <height>81</height>
+     <x>60</x>
+     <y>140</y>
+     <width>344</width>
+     <height>195</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Info1">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>40</y>
+     <width>281</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="text">
     <string/>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="Answer">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>240</y>
-     <width>211</width>
-     <height>21</height>
-    </rect>
    </property>
   </widget>
  </widget>

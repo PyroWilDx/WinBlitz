@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>400</height>
+    <width>480</width>
+    <height>360</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QLabel" name="Info1">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>10</y>
-     <width>361</width>
-     <height>31</height>
+     <x>10</x>
+     <y>30</y>
+     <width>461</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="font">
@@ -37,8 +37,8 @@
   <widget class="QLineEdit" name="TextInput">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>330</y>
+     <x>80</x>
+     <y>310</y>
      <width>311</width>
      <height>24</height>
     </rect>
@@ -49,8 +49,8 @@
     <rect>
      <x>30</x>
      <y>100</y>
-     <width>551</width>
-     <height>191</height>
+     <width>421</width>
+     <height>161</height>
     </rect>
    </property>
    <property name="font">
