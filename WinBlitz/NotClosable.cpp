@@ -5,7 +5,7 @@
 
 NotClosable::NotClosable(QWidget *parent)
         : QWidget{parent} {
-    setWindowFlags(Qt::WindowTitleHint | Qt::CustomizeWindowHint);
+    setWindowFlags(Qt::WindowTitleHint | Qt::CustomizeWindowHint | Qt::MSWindowsFixedSizeDialogHint);
 
     gName = "";
     gCleared = false;

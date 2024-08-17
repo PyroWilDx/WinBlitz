@@ -32,6 +32,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         RememberNumber.h RememberNumber.cpp RememberNumber.ui
         SlideTo.h SlideTo.cpp SlideTo.ui
         ClickDate.h ClickDate.cpp ClickDate.ui
+        CheckBox.h CheckBox.cpp CheckBox.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET WinBlitz APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
