@@ -8,6 +8,7 @@
 #include "SlideTo.h"
 #include "ClickDate.h"
 #include "RememberNumber.h"
+#include "CheckBox.h"
 #include <QScreen>
 #include <QTimer>
 #include <QRandomGenerator>
@@ -34,6 +35,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     clearedWindowCount = 0;
     activeWindowCount = 0;
+
+    currWindowX = 1;
+    currWindowY = 0;
 
     keyWindowPositionMap = {
         {Qt::Key_F1, {0, 0}},
@@ -91,8 +95,8 @@ void MainWindow::finishLoop() {
 
 NotClosable *MainWindow::getRandomMiniGame() {
     NotClosable *mg = nullptr;
-    // int rd = QRandomGenerator::global()->bounded(6);
-    int rd = 6;
+    int rd = QRandomGenerator::global()->bounded(8);
+    // int rd = 7;
     switch (rd) {
         case 0:
             mg = new CookieClicker();
@@ -114,6 +118,10 @@ NotClosable *MainWindow::getRandomMiniGame() {
             break;
         case 6:
             mg = new ClickDate();
+            break;
+        case 7:
+            mg = new CheckBox();
+            break;
     }
     return mg;
 }
@@ -124,11 +132,21 @@ void MainWindow::addWindow(NotClosable *window) {
                            QString::number(clearedWindowCount + activeWindowCount + 1) + ")");
     window->setAttribute(Qt::WA_ShowWithoutActivating);
     window->setWindowFlag(Qt::WindowStaysOnTopHint, false);
-    window->move(QApplication::primaryScreen()->geometry().width() - window->width(), currWindowHeight);
+
+    window->move(currWindowX * 382 + 8, currWindowY * 246);
+    currWindowX++;
+    if (currWindowX == MAX_WINDOW_PER_DIM) {
+        currWindowX = 0;
+        currWindowY++;
+        if (currWindowY == MAX_WINDOW_PER_DIM - 1) {
+            currWindowX = 1;
+            currWindowY = 0;
+        }
+    }
+
     window->show();
     setActiveWindowCount(activeWindowCount + 1);
     setCurrWindowHeight(currWindowHeight + QApplication::style()->pixelMetric(QStyle::PM_TitleBarHeight));
-    // QApplication::focusWindow()->raise();
 }
 
 void MainWindow::closeWindow(NotClosable *window) {

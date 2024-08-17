@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>260</width>
+    <height>142</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,10 +17,10 @@
    <widget class="QPushButton" name="StartButton">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>220</y>
-      <width>181</width>
-      <height>51</height>
+      <x>90</x>
+      <y>60</y>
+      <width>80</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">
@@ -30,10 +30,10 @@
    <widget class="QPushButton" name="ExitButton">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>310</y>
-      <width>181</width>
-      <height>51</height>
+      <x>90</x>
+      <y>100</y>
+      <width>80</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">
@@ -43,10 +43,10 @@
    <widget class="QLabel" name="ClearedWindowText">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>10</y>
-      <width>341</width>
-      <height>61</height>
+      <x>8</x>
+      <y>8</y>
+      <width>200</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
@@ -56,10 +56,10 @@
    <widget class="QLabel" name="ActiveWindowText">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>100</y>
-      <width>341</width>
-      <height>61</height>
+      <x>8</x>
+      <y>24</y>
+      <width>300</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">

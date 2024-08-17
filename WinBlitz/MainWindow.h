@@ -57,6 +57,8 @@ private slots:
     void onExitButtonClicked();
 
 private:
+    static const int MAX_WINDOW_PER_DIM = 5;
+
     static MainWindow *sInstance;
 
     Ui::MainWindow *ui;
@@ -68,6 +70,9 @@ private:
 
     int clearedWindowCount;
     int activeWindowCount;
+
+    int currWindowX;
+    int currWindowY;
 
     QMap<int, QPoint> keyWindowPositionMap;
 };
