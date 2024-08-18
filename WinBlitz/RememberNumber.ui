@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Remember this number and come back after the timer ended</string>
+    <string>Remember Number</string>
    </property>
   </widget>
   <widget class="QLabel" name="Timer">

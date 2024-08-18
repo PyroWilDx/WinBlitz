@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Wait for the timer to run out and click on the button</string>
+    <string>Wait Timer</string>
    </property>
   </widget>
   <widget class="QLabel" name="Timer">

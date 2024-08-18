@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Check all the boxes</string>
+    <string>Check Boxes</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

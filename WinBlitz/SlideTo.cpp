@@ -10,7 +10,7 @@ SlideTo::SlideTo(QWidget *parent)
     gName = "Slide To";
 
     targetNumber = QRandomGenerator::global()->bounded(1, 100);
-    ui->Info1->setText("Slide to " + QString::number(targetNumber) + "% and release");
+    ui->Info1->setText("Slide To " + QString::number(targetNumber) + "%");
 
     connect(ui->Slider, &QSlider::valueChanged, this, &SlideTo::onSliderValueChanged);
     connect(ui->Slider, &QSlider::sliderReleased, this, &SlideTo::onSliderReleased);

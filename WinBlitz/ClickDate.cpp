@@ -10,7 +10,7 @@ ClickDate::ClickDate(QWidget *parent)
 
     setRandomTargetDate(1000, 3000);
 
-    ui->Info1->setText("Set the date to : " +
+    ui->Info1->setText("Set Date : " +
                        QString::number(targetDate.day()).rightJustified(2, '0') + "/" +
                        QString::number(targetDate.month()).rightJustified(2, '0') + "/" +
                        QString::number(targetDate.year()) + " (DD/MM/YYYY)");

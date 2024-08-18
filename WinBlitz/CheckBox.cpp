@@ -9,7 +9,7 @@ CheckBox::CheckBox(QWidget *parent)
     ui->setupUi(this);
 
     checkedCount = 0;
-    checkBoxCount = QRandomGenerator::global()->bounded(6, 32);
+    checkBoxCount = QRandomGenerator::global()->bounded(6, 22);
 
     int currCount = 0;
     int i = 16;
