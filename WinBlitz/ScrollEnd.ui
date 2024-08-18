@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>WaitTimer</class>
- <widget class="QWidget" name="WaitTimer">
+ <class>ScrollEnd</class>
+ <widget class="QWidget" name="ScrollEnd">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -19,38 +19,41 @@
      <x>10</x>
      <y>10</y>
      <width>300</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Wait Timer</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="Timer">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>40</y>
-     <width>300</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string/>
+    <string>Scroll Widget</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="Button">
+  <widget class="QScrollArea" name="Scroller">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>100</y>
-     <width>171</width>
-     <height>81</height>
+     <x>10</x>
+     <y>40</y>
+     <width>360</width>
+     <height>160</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Start Timer</string>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOn</enum>
    </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="ScrollWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>344</width>
+      <height>158</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

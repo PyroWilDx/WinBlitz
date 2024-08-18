@@ -28,7 +28,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Type the words</string>
+    <string>Type Words</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

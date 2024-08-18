@@ -9,6 +9,8 @@
 #include "ClickDate.h"
 #include "RememberNumber.h"
 #include "CheckBox.h"
+#include "ScrollEnd.h"
+#include "FindLabel.h"
 #include <QScreen>
 #include <QTimer>
 #include <QRandomGenerator>
@@ -95,32 +97,37 @@ void MainWindow::finishLoop() {
 
 NotClosable *MainWindow::getRandomMiniGame() {
     NotClosable *mg = nullptr;
-    int rd = QRandomGenerator::global()->bounded(8);
-    // int rd = 7;
+    int rd = QRandomGenerator::global()->bounded(1, 10 + 1);
     switch (rd) {
-        case 0:
+        case 1:
             mg = new CookieClicker();
             break;
-        case 1:
+        case 2:
             mg = new WriteText();
             break;
-        case 2:
+        case 3:
             mg = new Calculation();
             break;
-        case 3:
+        case 4:
             mg = new WaitTimer();
             break;
-        case 4:
+        case 5:
             mg = new RememberNumber();
             break;
-        case 5:
+        case 6:
             mg = new SlideTo();
             break;
-        case 6:
+        case 7:
             mg = new ClickDate();
             break;
-        case 7:
+        case 8:
             mg = new CheckBox();
+            break;
+        case 9:
+            mg = new ScrollEnd();
+            break;
+        case 10:
+            mg = new FindLabel();
             break;
     }
     return mg;

@@ -12,7 +12,7 @@ CookieClicker::CookieClicker(QWidget *parent)
     pressedTarget = QRandomGenerator::global()->bounded(6, 16);
     pressedCount = 0;
 
-    ui->Info1->setText("Press the button " + QString::number(pressedTarget) + " times");
+    ui->Info1->setText("Press Button " + QString::number(pressedTarget) + " Times");
 
     connect(ui->Cookie, &QPushButton::clicked, this, &CookieClicker::onCookieClicked);
 
