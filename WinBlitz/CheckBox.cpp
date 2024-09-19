@@ -8,6 +8,8 @@ CheckBox::CheckBox(QWidget *parent)
         : NotClosable(parent), ui(new Ui::CheckBox) {
     ui->setupUi(this);
 
+    gName = "Check Boxes";
+
     checkedCount = 0;
     checkBoxCount = QRandomGenerator::global()->bounded(6, 22);
 
