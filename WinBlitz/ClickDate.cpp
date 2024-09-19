@@ -8,6 +8,8 @@ ClickDate::ClickDate(QWidget *parent)
         : NotClosable(parent), ui(new Ui::ClickDate) {
     ui->setupUi(this);
 
+    gName = "Set Date";
+
     setRandomTargetDate(1000, 3000);
 
     ui->Info1->setText("Set Date : " +
