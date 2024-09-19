@@ -9,6 +9,8 @@ ScrollEnd::ScrollEnd(QWidget *parent)
         : NotClosable(parent), ui(new Ui::ScrollEnd) {
     ui->setupUi(this);
 
+    gName = "Scroll To End";
+
     QVBoxLayout *qLayout = new QVBoxLayout(ui->ScrollWidget);
     for (int i = 0; i < 100; i++) {
         qLayout->addWidget(new QLabel(ui->ScrollWidget));

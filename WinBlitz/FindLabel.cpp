@@ -9,6 +9,8 @@ FindLabel::FindLabel(QWidget *parent)
         : NotClosable(parent), ui(new Ui::FindLabel) {
     ui->setupUi(this);
 
+    gName = "Find Label";
+
     int wordLength = 6;
 
     int r = QRandomGenerator::global()->bounded(10);
