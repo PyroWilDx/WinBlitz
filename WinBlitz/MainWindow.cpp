@@ -80,7 +80,7 @@ void MainWindow::startLoop() {
 
 void MainWindow::gLoop() {
     int rd = QRandomGenerator::global()->bounded(100);
-    int p = (int) (10. + qLn(qPow(clearedWindowCount + 1, qLn(clearedWindowCount + 1))));
+    int p = (int) (16. + qLn(qPow(clearedWindowCount + 1, qLn(clearedWindowCount + 1))));
     if (rd < p || windows.isEmpty()) {
         if (windows.size() == MAX_WINDOW_COUNT) {
             finishLoop();
@@ -142,7 +142,7 @@ void MainWindow::addWindow(NotClosable *window) {
 
     window->move(currWindowX * 382 + 8, currWindowY * 246);
     currWindowX++;
-    if (currWindowX == MAX_WINDOW_PER_DIM) {
+    if (currWindowX == MAX_WINDOW_PER_DIM - 1) {
         currWindowX = 0;
         currWindowY++;
         if (currWindowY == MAX_WINDOW_PER_DIM - 1) {
@@ -209,6 +209,8 @@ void MainWindow::closeEvent(QCloseEvent *e) {
 void MainWindow::onStartButtonClicked() {
     if (ui->StartButton->text() == "Start") {
         ui->StartButton->setText("Stop");
+        currWindowX = 1;
+        currWindowY = 0;
         setClearedWindowCount(0);
         setActiveWindowCount(0);
         setCurrWindowHeight(0);
