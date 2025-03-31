@@ -8,6 +8,9 @@
 
 <div align="center">
 
+| [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows8/windows8-original.svg" width="60"/>](https://github.com/PyroWilDx/WinBlitz/releases/) |
+|---|
+
 </div>
 
 ## Development Set-Up
