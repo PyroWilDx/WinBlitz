@@ -8,9 +8,6 @@
 
 <div align="center">
 
-| [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows8/windows8-original.svg" width="60"/>](https://www.mediafire.com/file/92s143qmn2h632a/WinBlitz.zip/) |
-|---|
-
 </div>
 
 ## Development Set-Up
